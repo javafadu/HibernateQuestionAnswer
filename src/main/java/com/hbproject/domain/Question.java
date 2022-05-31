@@ -1,5 +1,7 @@
 package com.hbproject.domain;
 
+import com.hbproject.domain.enums.QuestionType;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -20,8 +22,15 @@ public class Question {
     @Column(updatable = false)
     private LocalDateTime createdDate=LocalDateTime.now();
 
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private QuestionType type;
+
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     private List<Answer> answers = new ArrayList<>();
+
+
 
 
     // 2- construction
@@ -52,6 +61,14 @@ public class Question {
 
     public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public QuestionType getType() {
+        return type;
+    }
+
+    public void setType(QuestionType type) {
+        this.type = type;
     }
 
     public List<Answer> getAnswers() {

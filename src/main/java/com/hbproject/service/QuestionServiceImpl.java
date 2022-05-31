@@ -10,6 +10,7 @@ public class QuestionServiceImpl implements IQuestionService {
 
     @Override
     public void saveQuestion(Question question) {
+        // business logic burada gerceklestiriliyor
         repo.saveQuestion(question);
     }
 
@@ -17,5 +18,10 @@ public class QuestionServiceImpl implements IQuestionService {
     public Question findById(Integer id) {
         return repo.getQuestion(id);
 
+    }
+
+    @Override
+    public void removeQuestion(Question question) {
+        repo.removeQuestion(question);
     }
 }

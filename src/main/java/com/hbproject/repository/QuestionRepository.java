@@ -37,5 +37,19 @@ public class QuestionRepository {
 
     }
 
+    // questionlari id lerine gore silme
+
+    public void removeQuestion(Question question){
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        session.remove(question);
+
+        tx.commit();
+        session.close();
+
+    }
+
 
 }
